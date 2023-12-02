@@ -1,0 +1,6 @@
+.envrc
+**/target
+nosetests.xml
+.noseids
+__pycache__/
+*.egg-info/
