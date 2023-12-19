@@ -31,7 +31,7 @@ print(total)
 
 ## General
 
-### `makeday.sh`
+### `makeday` script
 
 Why bother with all that tedious writing of boilerplate? The Advent format is
 pretty predictable and hasn't changed in years.

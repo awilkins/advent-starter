@@ -1,5 +1,6 @@
+from __future__ import annotations
 
-from typing import Sequence
+from typing import Sequence, List
 
 
 def answer_1(lines: Sequence[str]):
