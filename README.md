@@ -44,7 +44,10 @@ So this script creates some code from templates and grabs the input for you.
 For this you'll need your session token for Advent of Code, which you can grab
 from your browser session - after you've logged in, it will be in your cookies
 each time you make a page request, so bash F12 and go to the network tab and
-find it.
+find it - it's the part in the "session" key of the cookie (which I've blurred
+out here, because it's MY session key).
+
+![image](https://github.com/awilkins/advent-starter/assets/368399/a9392fd7-e2c0-4d1e-aeca-36ed8dddad65)
 
 Export this to your environment as `AOC_TOKEN` ; I have
 [`direnv`](https://direnv.net/) installed to do this for me.
