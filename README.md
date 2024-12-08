@@ -9,6 +9,7 @@ Some of the most useful Python features for doing Advent puzzles fast :
 
 - List comprehensions
   - e.g. "a list of integers for each one of these numeric strings" or
+
 ```python
 numeric_strings = [ '1', '3', '5', '7' ]
 # Longhand way
@@ -21,12 +22,15 @@ numbers = [int(numeric) for numeric in numeric_strings]
 print (slow_numbers, numbers)
 [1, 3, 5, 7] [1, 3, 5, 7]
 ```
+
 - Functions that do things with lists or iterables like `sum()`
+
 ```python
 total = sum(numbers)
 print(total)
 16
 ```
+
 - [`itertools`](https://docs.python.org/3/library/itertools.html)
 
 ## General
@@ -56,3 +60,17 @@ Export this to your environment as `AOC_TOKEN` ; I have
 
 The templates call functions in this module, which loads the `input.txt` and
 presents it as a list of lines.
+
+There's also now a function for for the odd occasion on which the input as a single
+string is more useful.
+
+Since the Advent [about](https://adventofcode.com/about) page
+explicitly asks you not to post your inputs, the `resources/` folder is now
+ignored. The utils now also take care of downloading your inputs if they are
+absent - you can download them manually and put them in `resources/day_NN/input.txt`
+if you like, but if AOC_TOKEN is in your environment, they'll be downloaded for you
+if they don't exist - which means you can check the code out on another machine
+and run the tests and they should still Just Work™.
+
+This means you'll have to install `urllib3` - the only non-standard package
+dependency of this repo at the moment.

@@ -1,20 +1,15 @@
 #!/bin/bash
 
 DAYPAD="0$1"
-
-YEAR="$(git name-rev --name-only HEAD | cut -c 1-4)"
 DAY="${DAYPAD: -2}"
-
 NAME=$2
 
-if [ -z $1 ]
-then
+if [ -z "$1" ]; then
   echo "Must provide a day number"
   exit 1
 fi
 
-if [ -z $NAME ]
-then
+if [ -z "$NAME" ]; then
   echo "Must provide a name for your module"
   exit 1
 fi
@@ -28,20 +23,18 @@ cp templates/python/test_code_head.py "advent/day_$DAY/test_$2.py"
   printf "\nfrom advent.day_%s.%s import *\n" "$DAY" "$NAME"
   echo
   echo "DAY=\"$DAY\""
-} >> "advent/day_$DAY/test_$2.py"
+} >>"advent/day_$DAY/test_$2.py"
 
-cat templates/python/test_code_foot.py >> "advent/day_$DAY/test_$2.py"
-
+cat templates/python/test_code_foot.py >>"advent/day_$DAY/test_$2.py"
 
 cp templates/python/code.py "advent/day_$DAY/$2.py"
 
 # Get input
-if [ -n "$AOC_TOKEN" ]
-then
-  curl "https://adventofcode.com/${YEAR}/day/${1}/input" --cookie "session=${AOC_TOKEN}" > "resources/day_$DAY/input.txt"
+if [ -n "$AOC_TOKEN" ]; then
+  RESOURCE_PATH=$(python -m advent.util "$DAY")
 else
   echo "AOC_TOKEN not found, skipping input fetch - put input in resources/day_$DAY/input.txt"
 fi
 
 # Open VSCode windows on the code we created
-code "advent/day_$DAY/$2.py" "advent/day_$DAY/test_$NAME.py" "resources/day_$DAY/input.txt"
+code "advent/day_$DAY/$2.py" "advent/day_$DAY/test_$NAME.py" "$RESOURCE_PATH"
